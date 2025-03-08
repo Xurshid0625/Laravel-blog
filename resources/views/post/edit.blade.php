@@ -37,8 +37,9 @@
 
     <div class="form-container">
         <div class="form-title">Post Yaratish</div>
-        <form method="POST" action="{{ route('post.edit') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('post.update', $post->id) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label>Title</label>
                 <input type="text" class="form-control" name="title" required>
@@ -56,7 +57,12 @@
 
 
             <button type="submit" class="btn btn-primary w-100">Save</button>
+
         </form>
+        <div class="container mt-5">
+            <a href="{{ route('/') }}"> <button type="submit" class="btn btn-primary w-100">Back to
+                    home</button></a>
+        </div>
     </div>
 
 </body>

@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Storage;
 
 class Postcontroller extends Controller
 {
+    // public function index(){
+    //     return view('About');
+    // }
 
-    public function index()
+    public function blog()
     {
         $posts = Post::all();
-        dd($posts);
-        return view('post.index')->with('posts', $posts);
+        // dd($posts);
+        return view('Blog')->with('posts', $posts);
     }
 
 
@@ -60,21 +63,18 @@ class Postcontroller extends Controller
 
     public function edit(Post $post)
     {
-
-        return view('post.edit')->with(['posts' => $post]);
+        return view('post.edit')->with('post', $post);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        // dd($request);
+        // return view('Blog');
     }
 
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        // return view('Blog')->with('post', $post);
     }
-
-    // public function postcreate(){
-
-    // }
 }
